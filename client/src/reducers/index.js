@@ -4,11 +4,14 @@ import {posts} from './posts';
 import {showModal} from './posts';
 import authReducer from './auth';
 import { userProfileReducer, updateProfile } from './userProfile';
+import { userlist, userProfile } from './userlist';
 
 export default combineReducers({
     posts,
     showModal,
     authReducer,
     userProfileReducer,
-    updateProfile
-})
+    updateProfile,
+    userlist,
+    userProfile
+});

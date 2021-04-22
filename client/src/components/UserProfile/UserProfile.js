@@ -4,6 +4,11 @@ import { useEffect } from 'react/cjs/react.development';
 import { updateProfile } from '../../actions/profile';
 import FileBase from 'react-file-base64';
 
+import CountrySelector from './CountrySelector';
+
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
+
 function UserProfile() {
     const [user, setUser] = useState(null);
     const [warning, setWarning] = useState(false);
@@ -36,6 +41,8 @@ function UserProfile() {
         }
     }, []);
 
+    
+
     // useEffect(() => {
     //     if(profile === null) {
     //         return setUser(JSON.parse(localStorage.getItem('profile')).result)
@@ -50,48 +57,63 @@ function UserProfile() {
             </div>
         )
     }
-
+    console.log(countryList());
+    const testix = () => {
+        
+    }
     return (
-        <div className='user-container'>
-            <img className="profile-image" src={user.imageUrl} alt='Profile image'></img>
-            <form className="profile-inputs" onSubmit={handleSubmit}>
-                <div>
-                <FileBase
-                    type="file"
-                    miltiple={false}
-                    onDone={({base64}) => setUser({...user, imageUrl: base64})}
-                />
-                    <div style={{maxWidth:'300px'}}>
-                        <label htmlFor="firstName">Firstname</label>
-                        <br />
-                        <input onChange={handleInput} id="firstName" className="form-control" value={user.firstName}></input>
+        <div className="profile-container">
+            <div className='profile-settings mb-3'>
+                    <img onClick={testix} className="profile-image" src={user.imageUrl} alt='Profile image'></img>
+                    <FileBase
+                            type="file"
+                            miltiple={false}
+                            onDone={({base64}) => setUser({...user, imageUrl: base64})}
+                    />
+                <form className="profile-inputs" onSubmit={handleSubmit}>
+                    <div className='profile-forms-block'>
+                    {/* <FileBase
+                        type="file"
+                        miltiple={false}
+                        onDone={({base64}) => setUser({...user, imageUrl: base64})}
+                    /> */}
+                        <div>
+                            <label htmlFor="firstName">Firstname</label>
+                            <br />
+                            <input onChange={handleInput} id="firstName" className="form-control" value={user.firstName}></input>
+                        </div>
+                        <div >
+                            <label htmlFor="lasttName">Lastname</label>
+                            <br />
+                            <input onChange={handleInput} id="lastName" className="form-control" value={user.lastName}></input>
+                        </div>
+                        <div >
+                            <label htmlFor="email">email</label>
+                            <br />
+                            <input onChange={handleInput} id="email" className="form-control" value={user.email}></input>
+                        </div>
                     </div>
-                    <div style={{maxWidth:'300px'}}>
-                        <label htmlFor="lasttName">Lastname</label>
-                        <br />
-                        <input onChange={handleInput} id="lastName" className="form-control" value={user.lastName}></input>
+                    <div className='profile-forms-block'>
+                        <div>
+                            <label htmlFor="password">password</label>
+                            <br />
+                            <input type='password' onChange={handleInput} id="password" className="form-control"></input>
+                        </div>
+                        <div >
+                            <label htmlFor="confirmPassword">Confirm password</label>
+                            <br />
+                            <input type='password' onChange={handleInput} id="confirmPassword" className="form-control mb-4"></input>
+                        </div>
+                        <button className='btn btn-success profile-update-btn'>Update</button>
+                        { warning && <p className='alert alert-danger'>Password mismatch!</p>}
                     </div>
-                    <div style={{maxWidth:'300px'}}>
-                        <label htmlFor="email">email</label>
-                        <br />
-                        <input onChange={handleInput} id="email" className="form-control" value={user.email}></input>
-                    </div>
-                </div>
-                <div className='pt-4'>
-                    <div style={{maxWidth:'300px'}}>
-                        <label htmlFor="password">password</label>
-                        <br />
-                        <input type='password' onChange={handleInput} id="password" className="form-control"></input>
-                    </div>
-                    <div style={{maxWidth:'300px'}}>
-                        <label htmlFor="confirmPassword">Confirm password</label>
-                        <br />
-                        <input type='password' onChange={handleInput} id="confirmPassword" className="form-control"></input>
-                    </div>
-                    { warning && <p className='alert alert-danger'>Password mismatch!</p>}
-                </div>
-                <button className='btn btn-success profile-update-btn'>Update</button>
-            </form>
+                </form>
+            </div>
+            
+            <div className="profile-additional-info">
+                <h3 style={{textAlign:'center'}} >Additional info</h3>
+                <CountrySelector />
+            </div>
         </div>
     )
 }

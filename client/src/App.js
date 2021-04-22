@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
 import UserProfile from './components/UserProfile/UserProfile';
-import { getPosts } from './actions/posts'
+import Userlist from './components/Userlist/Userlist';
+import Profile from './components/Userlist/Profile';
+import { getPosts } from './actions/posts';
 
 function App() {
   const [currentId, setCurrentId] = useState(null);
@@ -36,6 +38,8 @@ function App() {
         <Route path="/user/profile">
           <UserProfile />
         </Route>
+        <Route path='/userlist' exact><Userlist /></Route>
+        <Route path="/profile/:id"><Profile /></Route>
       </div>
     </div>
     </Router>

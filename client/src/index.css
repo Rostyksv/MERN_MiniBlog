@@ -266,13 +266,19 @@ body {
   align-items: center;
 }
 
-.user-container{
+.profile-container{
   position: relative;
-  background-color: white;
   width: 100vw;
-  max-width: 100%;
-  border: 1px solid red;
-  height: 400px;
+  min-height: 400px;
+}
+
+.profile-settings{
+  background-color: #fff;
+  margin-bottom: 3rem;
+}
+
+.profile-additional-info{
+  background-color: #fff;
 }
 .profile-image {
   width: 150px;
@@ -283,18 +289,112 @@ body {
   margin-right: auto;
   left: 0;
   right: 0;
-  top: -50px;
+  top: -45px;
 }
 .profile-inputs{
-  padding: 50px;
+  padding: 3rem;
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
+  align-items: center;
 }
+.profile-forms-block {
+  width: 40%;
+}
+
+@media screen and (max-width:992px) {
+  .profile-inputs {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-forms-block{
+    width: 100%;
+  }
+}
+
 .profile-update-btn{
+  width: 100%;
+}
+
+/* .profile-update-btn{
   position: absolute;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
   bottom: 50px;
+} */
+
+.userlist{
+  width: 100%;
+}
+
+.userlist-container{
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  grid-gap: 1rem;
+}
+
+.userlist-info {
+  background-color: #fff;
+  height: 50px;
+  margin-bottom: 3rem;
+  display: grid;
+  place-items: center;
+}
+
+.user-container{
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 100vh;
+  width: 100vw;
+  max-width: 200px;
+  max-height: 200px;
+  background-color: white;
+}
+.user-img-container{
+  border: 1px solid red;
+  height: 80%;
+  margin: 0.2rem;
+}
+.user-img{
+  width: 100%;
+  height: 100%;
+}
+.user-name{
+  text-align: center;
+}
+.user-name a{
+  color: black;
+}
+
+.profile-visit{
+  border: 1px solid red;
+  width: 100vw;
+  height: 100vh;
+}
+.profile-visit-container{
+  display: flex;
+  justify-content: space-between;
+}
+.profile-visit-img-container{
+  width: 30%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.profile-visit-img{
+  border-radius: 50%;
+  width: 100%;
+  max-width: 150px;
+  max-height: 150px;
+}
+.profile-visit-info-container{
+  width: 65%;
+  background-color: white;
 }

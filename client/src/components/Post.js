@@ -3,7 +3,7 @@ import { AiFillLike, AiFillDelete } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 
-import { deletePost, likePost} from '../actions/posts.js';
+import { deletePost, likePost, updatePost} from '../actions/posts.js';
 import { useEffect } from 'react/cjs/react.development';
 
 import {showModal, hideModal} from '../actions/posts';
@@ -33,7 +33,7 @@ function Post( {post, setCurrentId, setTag} ) {
                     {selectedFile ? <img onClick={() => dispatch(showModal({showModal: true, img: selectedFile}))} src={selectedFile} id='postImg' alt={'No image'}></img> : <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSgM3hZ8VQVLXRdp7H1KXBghWyGtk-OWsBZg&usqp=CAU'} id='postImg' alt={'No image'}></img>}
                     <div className='top-info'>
                         <p> {name}<span style={{display:'block', fontSize:'0.7rem'}}>{moment(createdAd).fromNow()}</span></p>
-                        {creator == user?.googleId || user?._id == creator ? <div><button onClick={() => setCurrentId(_id)}>...</button></div> : ''}
+                        {creator === user?.googleId || user?._id === creator ? <div><button onClick={() => setCurrentId(_id)}>...</button></div> : ''}
                         
                     </div>
                 </div>
